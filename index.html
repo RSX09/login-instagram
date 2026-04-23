@@ -3,85 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Accesso</title>
+<title>Instagram Login</title>
 
 <style>
 body {
     margin: 0;
     background: #fafafa;
-    font-family: Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-/* BOX PIÙ ALTO (RETTANGOLO VERTICALE) */
+/* CONTAINER */
 .card {
-    width: 360px;
-    min-height: 520px;
-    background: white;
+    width: 350px;
+    background: #fff;
     border: 1px solid #dbdbdb;
-    padding: 50px 40px;
+    padding: 40px 40px 25px;
     text-align: center;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 /* LOGO */
 .logo {
-    font-size: 42px;
-    font-weight: bold;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
     margin-bottom: 30px;
 }
 
 /* INPUT */
 input {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     margin: 6px 0;
     border: 1px solid #dbdbdb;
-    border-radius: 6px;
+    border-radius: 3px;
     background: #fafafa;
+    font-size: 12px;
 }
 
-/* PASSWORD BOX */
+/* PASSWORD */
 .password-box {
     position: relative;
 }
 
-/* OCCHIO */
 .eye {
     position: absolute;
     right: 10px;
-    top: 12px;
-    font-size: 14px;
-    color: gray;
+    top: 10px;
+    font-size: 13px;
+    color: #8e8e8e;
     cursor: pointer;
 }
 
-/* PASSWORD DIMENTICATA */
+/* FORGOT */
 .forgot {
     font-size: 12px;
-    color: #0095f6;
+    color: #00376b;
     cursor: pointer;
-    margin-top: 6px;
     text-align: right;
+    margin-top: 8px;
 }
 
 /* BUTTON */
 button {
     width: 100%;
-    padding: 12px;
+    padding: 8px;
     margin-top: 15px;
-    background: #4dabf7;
+    background: #0095f6;
     border: none;
     color: white;
-    font-weight: bold;
+    font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
+    opacity: 0.5;
 }
 
 button:hover {
@@ -90,28 +87,50 @@ button:hover {
 
 /* OPPURE */
 .or {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 20px 0;
     font-size: 12px;
-    color: gray;
-    letter-spacing: 1px;
+    font-weight: 600;
+    color: #8e8e8e;
+    gap: 10px;
 }
 
-/* LINK */
+.or::before,
+.or::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #dbdbdb;
+}
+
+/* SOCIAL LOGIN */
 .link {
-    font-size: 12px;
-    color: #0095f6;
+    font-size: 13px;
+    color: #385185;
     cursor: pointer;
-    margin-top: 10px;
+    font-weight: 600;
 }
 
+/* FOOTER */
 .footer {
     margin-top: 25px;
-    font-size: 12px;
-    color: gray;
+    font-size: 13px;
+    color: #262626;
 }
+
 .footer span {
     color: #0095f6;
+    font-weight: 600;
     cursor: pointer;
+}
+
+/* SMALL FOOTER STYLE */
+.small {
+    margin-top: 15px;
+    font-size: 11px;
+    color: #8e8e8e;
 }
 </style>
 </head>
@@ -135,10 +154,14 @@ button:hover {
 
     <div class="or">OPPURE</div>
 
-    <div class="link">Continua con un account social</div>
+    <div class="link">Continua con Facebook</div>
 
     <div class="footer">
         Non hai un account? <span>Registrati</span>
+    </div>
+
+    <div class="small">
+        Scarica l’app e accedi più velocemente
     </div>
 
 </div>
