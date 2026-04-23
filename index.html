@@ -16,7 +16,7 @@ body {
     height: 100vh;
 }
 
-/* BOX PIÙ VERTICALE (NON QUADRATO) */
+/* BOX */
 .card {
     width: 350px;
     min-height: 600px;
@@ -29,13 +29,12 @@ body {
     justify-content: center;
 }
 
-/* LOGO INSTAGRAM PIÙ SIMILE */
+/* LOGO INSTAGRAM (più simile stile script) */
 .logo {
-    font-family: "Billabong", "Brush Script MT", cursive;
-    font-size: 48px;
-    font-weight: 500;
+    font-family: "Billabong", "Segoe Script", "Brush Script MT", cursive;
+    font-size: 52px;
+    font-weight: 400;
     margin-bottom: 35px;
-    letter-spacing: 0.5px;
 }
 
 /* INPUT */
@@ -63,11 +62,15 @@ input {
     cursor: pointer;
 }
 
-/* FORGOT */
-.forgot {
+/* LINK AZZURRO INSTAGRAM */
+.blue {
     font-size: 12px;
-    color: #00376b;
+    color: #0095f6;
     cursor: pointer;
+}
+
+/* PASSWORD DIMENTICATA */
+.forgot {
     text-align: right;
     margin-top: 8px;
 }
@@ -86,7 +89,7 @@ button {
     opacity: 0.4;
 }
 
-/* OPPURE PERFETTAMENTE CENTRATO */
+/* OPPURE */
 .or {
     display: flex;
     align-items: center;
@@ -106,10 +109,10 @@ button {
     background: #dbdbdb;
 }
 
-/* LINK SOCIAL */
+/* FACEBOOK */
 .link {
     font-size: 13px;
-    color: #385185;
+    color: #0095f6;
     cursor: pointer;
     font-weight: 600;
 }
@@ -127,7 +130,7 @@ button {
     cursor: pointer;
 }
 
-/* EXTRA SPACING */
+/* SMALL TEXT */
 .small {
     margin-top: 18px;
     font-size: 11px;
@@ -149,7 +152,7 @@ button {
         <div class="eye" onclick="togglePassword()">👁</div>
     </div>
 
-    <div class="forgot">Password dimenticata?</div>
+    <div class="forgot blue">Password dimenticata?</div>
 
     <button>Accedi</button>
 
