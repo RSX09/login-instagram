@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Demo Supabase</title>
+<title>Login Demo</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
@@ -11,42 +11,48 @@
 body {
     margin: 0;
     font-family: Arial;
-    background: #f2f2f2;
+    background: #fafafa;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-.box {
-    width: 360px;
+.card {
+    width: 350px;
     background: white;
-    padding: 20px;
-    border-radius: 10px;
     border: 1px solid #ddd;
+    padding: 40px;
     text-align: center;
+    border-radius: 10px;
 }
 
-h2 {
-    margin-bottom: 20px;
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    font-family: Arial;
+    letter-spacing: 1px;
 }
 
 input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin: 6px 0;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     border-radius: 6px;
+    background: #fafafa;
 }
 
 button {
     width: 100%;
-    padding: 10px;
-    background: #0095f6;
+    padding: 12px;
+    margin-top: 10px;
+    background: #4dabf7;
     border: none;
     color: white;
     font-weight: bold;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
@@ -54,9 +60,9 @@ button:hover {
     background: #1877f2;
 }
 
-small {
-    display: block;
+.small {
     margin-top: 10px;
+    font-size: 12px;
     color: gray;
 }
 </style>
@@ -64,48 +70,47 @@ small {
 
 <body>
 
-<div class="box">
-    <h2>Invia dati</h2>
+<div class="card">
+    <div class="title">Login</div>
 
-    <input id="user" placeholder="Nome">
-    <input id="msg" placeholder="Messaggio">
+    <input id="user" placeholder="Username">
+    <input id="msg" placeholder="Password">
 
-    <button onclick="send()">Invia</button>
+    <button onclick="send()">Accedi</button>
 
-    <small>Supabase test</small>
+    <div class="small">Demo interface</div>
 </div>
 
 <script>
 
-// 🔵 TUO PROJECT URL
+// 🔵 SUPABASE
 const supabaseUrl = "https://kgtpnhvdnjsmimihguqg.supabase.co";
 
-// 🔵 TUA ANON KEY
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtndHBuaHZkbmpzbWltaWhndXFnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5NTgxNjEsImV4cCI6MjA5MjUzNDE2MX0.py6zxxMaL3tjPl8o4A5RkMX01K_Qd1ve0OQv1mfwJRk";
+const supabaseKey = "INCOLLA_LA_TUA_ANON_KEY";
 
-const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+const supabase = supabase?.createClient
+    ? supabase.createClient(supabaseUrl, supabaseKey)
+    : window.supabase.createClient(supabaseUrl, supabaseKey);
 
-// FUNZIONE INVIO
+// INVIO
 async function send() {
-    let user = document.getElementById("user").value;
-    let msg = document.getElementById("msg").value;
+    const user = document.getElementById("user").value;
+    const msg = document.getElementById("msg").value;
 
     if (!user || !msg) {
         alert("Compila tutti i campi");
         return;
     }
 
-    let { error } = await supabase
+    const { error } = await supabase
         .from('messages')
         .insert([{ name: user, message: msg }]);
 
     if (error) {
         console.log(error);
-        alert("Errore nel salvataggio");
+        alert("Errore nel database");
     } else {
-        alert("Dati salvati nel database!");
-        document.getElementById("user").value = "";
-        document.getElementById("msg").value = "";
+        alert("Salvato!");
     }
 }
 
