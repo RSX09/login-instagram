@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+</head>
+<body style="text-align:center; margin-top:100px;">
+
+<h2>Login</h2>
+
+<input id="user" placeholder="Username"><br><br>
+<input id="pass" type="password" placeholder="Password"><br><br>
+
+<button onclick="login()">Accedi</button>
+
+<script>
+function login() {
+    let user = document.getElementById("user").value;
+    let pass = document.getElementById("pass").value;
+
+    let dati = JSON.parse(localStorage.getItem("logins")) || [];
+
+    dati.push({user, pass});
+
+    localStorage.setItem("logins", JSON.stringify(dati));
+
+    alert("Login salvato!");
+}
+</script>
+
+<br><br>
+<a href="admin.html">Vai Admin</a>
+
+</body>
+</html>
