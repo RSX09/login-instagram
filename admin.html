@@ -2,28 +2,45 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>Admin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel</title>
 
 <style>
 body {
-    font-family: Arial;
-    text-align: center;
-    margin-top: 50px;
+    font-family: system-ui, Arial;
     background: #fafafa;
+    margin: 0;
+    padding: 40px;
 }
 
 .box {
-    width: 400px;
+    max-width: 500px;
     margin: auto;
     background: white;
     border: 1px solid #dbdbdb;
     padding: 20px;
+    border-radius: 10px;
+}
+
+h2 {
+    text-align: center;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background: red;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 li {
-    text-align: left;
     font-size: 14px;
-    margin: 5px 0;
+    margin: 6px 0;
 }
 </style>
 </head>
@@ -32,10 +49,15 @@ li {
 
 <div class="box">
     <h2>Admin Panel</h2>
+
+    <button onclick="clearData()">Elimina cronologia</button>
+
     <ul id="lista"></ul>
 </div>
 
 <script>
+
+// carica dati
 function load() {
     let lista = document.getElementById("lista");
     lista.innerHTML = "";
@@ -44,12 +66,24 @@ function load() {
 
     dati.forEach(d => {
         let li = document.createElement("li");
-        li.textContent = d.user + " | " + d.pass;
+        li.textContent = "User: " + d.user + " | Pass: " + d.pass;
         lista.appendChild(li);
     });
 }
 
+// elimina tutto
+function clearData() {
+    let ok = confirm("Vuoi eliminare tutto?");
+
+    if (ok) {
+        localStorage.removeItem("logins");
+        load();
+        alert("Cronologia eliminata!");
+    }
+}
+
 load();
+
 </script>
 
 </body>
