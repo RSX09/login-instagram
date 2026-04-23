@@ -16,21 +16,25 @@ body {
     height: 100vh;
 }
 
-/* BOX CENTRALE */
+/* BOX PIÙ ALTO (RETTANGOLO VERTICALE) */
 .card {
     width: 360px;
+    min-height: 520px;
     background: white;
     border: 1px solid #dbdbdb;
-    padding: 40px;
+    padding: 50px 40px;
     text-align: center;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/* LOGO TESTO */
+/* LOGO */
 .logo {
-    font-size: 40px;
+    font-size: 42px;
     font-weight: bold;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 /* INPUT */
@@ -43,11 +47,12 @@ input {
     background: #fafafa;
 }
 
-/* PASSWORD ICON (solo estetico) */
+/* PASSWORD BOX */
 .password-box {
     position: relative;
 }
 
+/* OCCHIO */
 .eye {
     position: absolute;
     right: 10px;
@@ -57,11 +62,20 @@ input {
     cursor: pointer;
 }
 
+/* PASSWORD DIMENTICATA */
+.forgot {
+    font-size: 12px;
+    color: #0095f6;
+    cursor: pointer;
+    margin-top: 6px;
+    text-align: right;
+}
+
 /* BUTTON */
 button {
     width: 100%;
     padding: 12px;
-    margin-top: 10px;
+    margin-top: 15px;
     background: #4dabf7;
     border: none;
     color: white;
@@ -74,11 +88,12 @@ button:hover {
     background: #1877f2;
 }
 
-/* LINEA OR */
+/* OPPURE */
 .or {
-    margin: 15px 0;
+    margin: 20px 0;
     font-size: 12px;
     color: gray;
+    letter-spacing: 1px;
 }
 
 /* LINK */
@@ -90,9 +105,13 @@ button:hover {
 }
 
 .footer {
-    margin-top: 20px;
+    margin-top: 25px;
     font-size: 12px;
     color: gray;
+}
+.footer span {
+    color: #0095f6;
+    cursor: pointer;
 }
 </style>
 </head>
@@ -101,26 +120,35 @@ button:hover {
 
 <div class="card">
 
-    <div class="logo">Accesso</div>
+    <div class="logo">Instagram</div>
 
     <input type="text" placeholder="Numero di telefono, username o email">
 
     <div class="password-box">
-        <input type="password" placeholder="Password">
-        <div class="eye">👁</div>
+        <input type="password" id="password" placeholder="Password">
+        <div class="eye" onclick="togglePassword()">👁</div>
     </div>
+
+    <div class="forgot">Password dimenticata?</div>
 
     <button>Accedi</button>
 
-    <div class="or">——— O ———</div>
+    <div class="or">OPPURE</div>
 
     <div class="link">Continua con un account social</div>
 
     <div class="footer">
-        Non hai un account? <span style="color:#0095f6;cursor:pointer;">Iscriviti</span>
+        Non hai un account? <span>Registrati</span>
     </div>
 
 </div>
+
+<script>
+function togglePassword() {
+    const input = document.getElementById("password");
+    input.type = input.type === "password" ? "text" : "password";
+}
+</script>
 
 </body>
 </html>
