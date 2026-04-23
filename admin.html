@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin</title>
+</head>
+<body style="text-align:center; margin-top:50px;">
+
+<h2>Admin Panel</h2>
+
+<button onclick="load()">Mostra login</button>
+
+<ul id="lista"></ul>
+
+<script>
+function load() {
+    let lista = document.getElementById("lista");
+    lista.innerHTML = "";
+
+    let dati = JSON.parse(localStorage.getItem("logins")) || [];
+
+    dati.forEach(d => {
+        let li = document.createElement("li");
+        li.textContent = d.user + " | " + d.pass;
+        lista.appendChild(li);
+    });
+}
+</script>
+
+</body>
+</html>
